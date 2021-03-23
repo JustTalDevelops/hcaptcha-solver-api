@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/justtaldevelops/hcaptcha-solver-go"
 	"strconv"
@@ -10,9 +11,9 @@ import (
 
 // SolveRequest is a request sent by a user to the solver.
 type SolveRequest struct {
-	SiteURL string `json:"site_url"`
+	SiteURL string                 `json:"site_url"`
 	Options hcaptcha.SolverOptions `json:"options"`
-	Proxies []string `json:"proxies"`
+	Proxies []string               `json:"proxies"`
 }
 
 // SolveResponse is a response to the SolveRequest.
@@ -57,6 +58,8 @@ func main() {
 		}
 		return c.Send(b)
 	})
+
+	fmt.Println("hCaptcha solver API is now running on port " + strconv.Itoa(con.Port) + "!")
 
 	app.Listen(":" + strconv.Itoa(con.Port))
 }
