@@ -2,7 +2,7 @@ package main
 
 import (
 	"crypto/rand"
-	"encoding/base64"
+	"encoding/hex"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"math"
@@ -11,9 +11,9 @@ import (
 
 // Config represents a configuration file.
 type Config struct {
-	Port int `yaml:"port"`
-	AuthorizationHeader string `json:"authorization_header"`
-	SolveTimeout int `json:"solve_timeout"`
+	Port                int    `yaml:"port"`
+	AuthorizationHeader string `yaml:"authorization_header"`
+	SolveTimeout        int    `yaml:"solve_timeout"`
 }
 
 // loadConfig loads the configuration file and returns a Config.
@@ -46,8 +46,8 @@ func loadConfig() (config Config) {
 }
 
 func generateAuthorizationHeader() string {
-	buff := make([]byte, int(math.Round(float64(24)/1.33333333333)))
+	buff := make([]byte, int(math.Round(float64(24)/2)))
 	rand.Read(buff)
-	str := base64.RawURLEncoding.EncodeToString(buff)
-	return str[:1] // strip 1 extra character we get from odd length results
+	str := hex.EncodeToString(buff)
+	return str[:24]
 }
