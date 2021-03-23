@@ -39,7 +39,7 @@ Your request body should be the following:
 {"site_url": "example.com"}
 ```
 
-For additional options, refer to [this portion](https://github.com/JustTalDevelops/hcaptcha-solver-go/blob/5ec4aaabf52cc71e3e906fe7fba2a3555ef9f8f6/solver.go#L42) of the original package.
+For additional options, refer to [this portion](https://github.com/JustTalDevelops/hcaptcha-solver-go/blob/77d9f67f86ae3a809020159349f7ee553fdb583f/solver.go#L42) of the original package.
 An example of additional options in JSON are as follows:
 ```
 {"site_url": "example.com", "options": {"site_key": "8fc2ffd0-a7a5-4345-a357-97d389a9a635"}}
