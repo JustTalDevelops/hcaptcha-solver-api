@@ -26,7 +26,7 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/solve", func(c *fiber.Ctx) error {
+	app.Post("/solve", func(c *fiber.Ctx) error {
 		if string(c.Request().Header.Peek("authorization")) != con.AuthorizationHeader {
 			return c.SendStatus(fiber.StatusForbidden)
 		}
